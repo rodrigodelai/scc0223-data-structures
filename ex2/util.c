@@ -6,6 +6,9 @@ char* ler_linha(){
     int indice_atual = 0;
     int tam_disponivel = 1;
 
+    while (caractere_atual == 32 || caractere_atual == '\n' || caractere_atual == '\r') caractere_atual = getchar(); // Limpa o buffer
+    if (caractere_atual == EOF) return NULL; // Sinaliza o fim do arquivo
+
     do{
         if (tam_disponivel <= indice_atual+1){
             linha = (char*) realloc(linha, (tam_disponivel+5) * sizeof(char));
