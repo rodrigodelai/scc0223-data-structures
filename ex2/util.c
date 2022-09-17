@@ -25,6 +25,11 @@ char* ler_linha(){
 
     linha[indice_atual] = '\0';
 
+    if(strcmp(linha, "F") == 0){ // Condição para pular etapa
+        free(linha);
+        linha = NULL; 
+    }
+
     return linha;
 }
 
