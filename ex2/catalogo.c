@@ -77,6 +77,15 @@ JOGO* catalogo_topo(CATALOGO* catalogo){
     return catalogo->lista[catalogo->qnt_jogos - 1];
 }
 
+int catalogo_qnt_jogos(CATALOGO* catalogo){
+    if (catalogo == NULL){
+        printf("Erro ao acessar quantidade de jogos: %d\n", ERRO_NULL);
+        return 0;
+    }
+
+    return catalogo->qnt_jogos;
+}
+
 void catalogo_exibir(CATALOGO* catalogo){
     if (catalogo == NULL){
         printf("Erro ao exibir catalogo: %d\n", ERRO_NULL);
@@ -96,9 +105,73 @@ void catalogo_exibir(CATALOGO* catalogo){
     }
 }
 
-JOGO* catalogo_buscar_nome(CATALOGO* catalogo, char* nome);
-JOGO* catalogo_buscar_empresa(CATALOGO* catalogo, char* nome);
-JOGO* catalogo_buscar_ano(CATALOGO* catalogo, char* nome);
+void catalogo_exibir_por_empresa(CATALOGO* catalogo, char* empresa){
+    if (catalogo == NULL || empresa == NULL){
+        printf("Erro ao exibir por empresa: %d\n", ERRO_NULL);
+    }
+    else{
+        boolean nada_encontrado = TRUE;
+
+        for (int i = 0; i < catalogo_qnt_jogos(catalogo); i++){
+            if (strcmp(empresa, jogo_acessar_empresa(catalogo->lista[i])) == 0){
+                printf("%s\n", jogo_acessar_nome(catalogo->lista[i]));
+                nada_encontrado = FALSE;
+            }
+        }
+    
+        if (nada_encontrado) printf("Nada encontrado\n");
+    }
+    apagar_linha(&empresa);
+}
+
+void catalogo_exibir_por_ano(CATALOGO* catalogo, char* ano){
+    if (catalogo == NULL || ano == NULL){
+        printf("Erro ao exibir por ano: %d\n", ERRO_NULL);
+    }
+    else{
+        boolean nada_encontrado = TRUE;
+
+        for (int i = 0; i < catalogo_qnt_jogos(catalogo); i++){
+            if (strcmp(ano, jogo_acessar_ano(catalogo->lista[i])) == 0){
+                printf("%s\n", jogo_acessar_nome(catalogo->lista[i]));
+                nada_encontrado = FALSE;
+            }
+        }
+    
+        if (nada_encontrado) printf("Nada encontrado\n");
+    }
+    apagar_linha(&ano);
+}
+
+boolean opcao_filtrar_por_empresa(char* opcao){
+    if (opcao == NULL){
+        printf("Erro ao selecionar filtro de empresa: %d\n", ERRO_NULL);
+        return FALSE;
+    }
+
+    if (strcmp(opcao, "E") == 0){
+        apagar_linha(&opcao);
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
+}
+
+boolean opcao_filtrar_por_ano(char* opcao){
+    if (opcao == NULL){
+        printf("Erro ao selecionar filtro de ano: %d\n", ERRO_NULL);
+        return FALSE;
+    }
+
+    if (strcmp(opcao, "A") == 0){
+        apagar_linha(&opcao);
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
+}
 
 boolean catalogo_destruir(CATALOGO** catalogo){
     if (catalogo == NULL || *catalogo == NULL){

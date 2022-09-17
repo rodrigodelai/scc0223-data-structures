@@ -8,11 +8,13 @@ typedef struct catalogo_st CATALOGO;
 CATALOGO* catalogo_criar();
 boolean catalogo_adicionar(CATALOGO* catalogo, JOGO* jogo);
 boolean catalogo_remover(CATALOGO* catalogo);
-void catalogo_exibir(CATALOGO* catalogo);
 JOGO* catalogo_topo(CATALOGO* catalogo);
-JOGO* catalogo_buscar_nome(CATALOGO* catalogo, char* nome);
-JOGO* catalogo_buscar_empresa(CATALOGO* catalogo, char* nome);
-JOGO* catalogo_buscar_ano(CATALOGO* catalogo, char* nome);
+int catalogo_qnt_jogos(CATALOGO* catalogo);
+void catalogo_exibir(CATALOGO* catalogo);
+void catalogo_exibir_por_empresa(CATALOGO* catalogo, char* empresa);
+void catalogo_exibir_por_ano(CATALOGO* catalogo, char* ano);
+boolean opcao_filtrar_por_empresa(char* opcao);
+boolean opcao_filtrar_por_ano(char* opcao);
 boolean catalogo_destruir(CATALOGO** catalogo);
 
 #endif // CATALOGO_H
