@@ -17,4 +17,7 @@ boolean opcao_filtrar_por_empresa(char* opcao);
 boolean opcao_filtrar_por_ano(char* opcao);
 boolean catalogo_destruir(CATALOGO** catalogo);
 
+void ler_novo_catalogo(CATALOGO* catalogo);
+void aplicar_filtros_de_exibicao(CATALOGO* catalogo);
+
 #endif // CATALOGO_H
