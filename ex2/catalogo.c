@@ -14,14 +14,7 @@ CATALOGO* catalogo_criar(){
         return novo_catalogo;
     }
 
-    novo_catalogo->lista = (JOGO**) malloc(sizeof(JOGO*));
-
-    if (novo_catalogo->lista == NULL){
-        printf("Erro ao criar lista no catalogo: %d\n", ERRO_NULL);
-        return NULL;
-    }
-
-    novo_catalogo->lista[0] = NULL;
+    novo_catalogo->lista = NULL;
     novo_catalogo->qnt_jogos = 0;
 
     return novo_catalogo;
@@ -36,7 +29,7 @@ boolean catalogo_adicionar(CATALOGO* catalogo, JOGO* jogo){
     catalogo->lista = (JOGO**) realloc(catalogo->lista, (catalogo->qnt_jogos + 1) * sizeof(JOGO*));
 
     if (catalogo->lista == NULL){
-        printf("Erro ao alterar lista no catalogo: %d\n", ERRO_NULL);
+        printf("Erro ao aumentar lista no catalogo: %d\n", ERRO_NULL);
         return FALSE;
     }
 
