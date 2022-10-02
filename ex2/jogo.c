@@ -14,17 +14,9 @@ JOGO* jogo_criar(){
         printf("Erro ao criar jogo: %d\n", ERRO_NULL);
         return novo_jogo;
     }
-    
-    novo_jogo->nome = (char*) malloc(2*sizeof(char));
-    novo_jogo->empresa = (char*) malloc(2*sizeof(char));
 
-    if (novo_jogo->nome == NULL || novo_jogo->empresa == NULL){
-        printf("Erro ao inicializar nome ou empresa: %d\n", ERRO_NULL);
-        return novo_jogo;
-    }
-
-    strcpy(novo_jogo->nome, "-");
-    strcpy(novo_jogo->empresa, "-");
+    novo_jogo->nome = NULL;
+    novo_jogo->empresa = NULL;
     novo_jogo->ano = 0;
 
     return novo_jogo;
