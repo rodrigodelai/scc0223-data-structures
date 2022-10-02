@@ -12,7 +12,7 @@ JOGO* catalogo_topo(CATALOGO* catalogo);
 int catalogo_qnt_jogos(CATALOGO* catalogo);
 void catalogo_exibir(CATALOGO* catalogo);
 void catalogo_exibir_por_empresa(CATALOGO* catalogo, char* empresa);
-void catalogo_exibir_por_ano(CATALOGO* catalogo, char* ano);
+void catalogo_exibir_por_ano(CATALOGO* catalogo, int ano);
 boolean opcao_filtrar_por_empresa(char* opcao);
 boolean opcao_filtrar_por_ano(char* opcao);
 boolean catalogo_destruir(CATALOGO** catalogo);

@@ -14,6 +14,7 @@ typedef int boolean;
 char* ler_linha();
 void exibir_linha(char* linha);
 boolean apagar_linha(char** linha);
+int ler_inteiro();
 void exibir_booleano();
 
 #endif // UTIL_H

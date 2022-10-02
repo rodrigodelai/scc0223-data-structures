@@ -4,7 +4,7 @@ struct jogo_st
 {
     char* nome;
     char* empresa;
-    char* ano;
+    int ano;
 };
 
 JOGO* jogo_criar(){
@@ -17,16 +17,15 @@ JOGO* jogo_criar(){
     
     novo_jogo->nome = (char*) malloc(2*sizeof(char));
     novo_jogo->empresa = (char*) malloc(2*sizeof(char));
-    novo_jogo->ano = (char*) malloc(5*sizeof(char));
 
-    if (novo_jogo->nome == NULL || novo_jogo->empresa == NULL || novo_jogo->ano == NULL){
-        printf("Erro ao criar nome, empresa ou ano: %d\n", ERRO_NULL);
+    if (novo_jogo->nome == NULL || novo_jogo->empresa == NULL){
+        printf("Erro ao inicializar nome ou empresa: %d\n", ERRO_NULL);
         return novo_jogo;
     }
 
     strcpy(novo_jogo->nome, "-");
     strcpy(novo_jogo->empresa, "-");
-    strcpy(novo_jogo->ano, "0000");
+    novo_jogo->ano = 0;
 
     return novo_jogo;
 }
@@ -55,13 +54,12 @@ boolean jogo_alterar_empresa(JOGO* jogo, char* nova_empresa){
     return TRUE;
 }
 
-boolean jogo_alterar_ano(JOGO* jogo, char* novo_ano){
-    if (jogo == NULL || novo_ano == NULL){
+boolean jogo_alterar_ano(JOGO* jogo, int novo_ano){
+    if (jogo == NULL){
         printf("Erro ao alterar ano: %d\n", ERRO_NULL);
         return FALSE;
     }
 
-    free(jogo->ano);
     jogo->ano = novo_ano;
     
     return TRUE;
@@ -85,10 +83,10 @@ char* jogo_acessar_empresa(JOGO* jogo){
     return jogo->empresa;
 }
 
-char* jogo_acessar_ano(JOGO* jogo){
+int jogo_acessar_ano(JOGO* jogo){
     if (jogo == NULL){
         printf("Erro ao acessar ano: %d\n", ERRO_NULL);
-        return NULL;
+        return 0;
     }
 
     return jogo->ano;
@@ -101,7 +99,7 @@ void jogo_exibir(JOGO* jogo){
     else {
         printf("Nome:    %40s\n", jogo->nome);
         printf("Empresa: %40s\n", jogo->empresa);
-        printf("Ano:     %40s\n", jogo->ano);
+        printf("Ano:     %40d\n", jogo->ano);
     }
 }
 
@@ -113,11 +111,10 @@ boolean jogo_destruir(JOGO** jogo){
 
     free((*jogo)->nome);
     free((*jogo)->empresa);
-    free((*jogo)->ano);
 
     (*jogo)->nome = NULL;
-    (*jogo)->ano = NULL;
     (*jogo)->empresa = NULL;
+    (*jogo)->ano = 0;
 
     free(*jogo);
     *jogo = NULL;

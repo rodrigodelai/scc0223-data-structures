@@ -117,15 +117,15 @@ void catalogo_exibir_por_empresa(CATALOGO* catalogo, char* empresa){
     apagar_linha(&empresa);
 }
 
-void catalogo_exibir_por_ano(CATALOGO* catalogo, char* ano){
-    if (catalogo == NULL || ano == NULL){
+void catalogo_exibir_por_ano(CATALOGO* catalogo, int ano){
+    if (catalogo == NULL){
         printf("Erro ao exibir por ano: %d\n", ERRO_NULL);
     }
     else{
         boolean nada_encontrado = TRUE;
 
         for (int i = 0; i < catalogo_qnt_jogos(catalogo); i++){
-            if (strcmp(ano, jogo_acessar_ano(catalogo->lista[i])) == 0){
+            if (jogo_acessar_ano(catalogo->lista[i]) == ano){
                 printf("%s\n", jogo_acessar_nome(catalogo->lista[i]));
                 nada_encontrado = FALSE;
             }
@@ -133,7 +133,6 @@ void catalogo_exibir_por_ano(CATALOGO* catalogo, char* ano){
     
         if (nada_encontrado) printf("Nada encontrado\n");
     }
-    apagar_linha(&ano);
 }
 
 boolean opcao_filtrar_por_empresa(char* opcao){
@@ -200,7 +199,7 @@ void ler_novo_catalogo(CATALOGO* catalogo){
             JOGO* jogo = jogo_criar();
             jogo_alterar_nome(jogo, texto);
             jogo_alterar_empresa(jogo, ler_linha());
-            jogo_alterar_ano(jogo, ler_linha());
+            jogo_alterar_ano(jogo, ler_inteiro());
             catalogo_adicionar(catalogo, jogo);
         }
     }
@@ -215,7 +214,7 @@ void aplicar_filtros_de_exibicao(CATALOGO* catalogo){
             catalogo_exibir_por_empresa(catalogo, ler_linha());
         }
         else if (opcao_filtrar_por_ano(texto)){
-            catalogo_exibir_por_ano(catalogo, ler_linha());
+            catalogo_exibir_por_ano(catalogo, ler_inteiro());
         }
         else {
             printf("Opcao invalida. Digite 'A' para filtrar o catalogo por ano, 'E' para filtrar por empresa ou 'F' para encerrar.\n");

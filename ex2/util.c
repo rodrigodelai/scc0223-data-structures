@@ -4,20 +4,17 @@ char* ler_linha(){
     char* linha = NULL;
     char caractere_atual = getchar();
     int indice_atual = 0;
-    int tam_disponivel = 1;
+    //int tam_disponivel = 1;
 
     while (caractere_atual == 32 || caractere_atual == '\n' || caractere_atual == '\r') caractere_atual = getchar(); // Limpa o buffer
     if (caractere_atual == EOF) return NULL; // Sinaliza o fim do arquivo
 
     do{
-        if (tam_disponivel <= indice_atual+1){
-            linha = (char*) realloc(linha, (tam_disponivel+5) * sizeof(char));
-            tam_disponivel+=5;
-        }
-
+        linha = (char*) realloc(linha, (indice_atual + 2) * sizeof(char));
         linha[indice_atual] = caractere_atual;
-        caractere_atual = getchar();
+        
         indice_atual++;
+        caractere_atual = getchar();
 
         if (caractere_atual == '\r') caractere_atual = getchar(); // Tratamento para ambiente Windows
 
@@ -48,6 +45,12 @@ boolean apagar_linha(char** linha){
     *linha = NULL;
 
     return TRUE;
+}
+
+int ler_inteiro(){
+    int inteiro = 0;
+    scanf(" %d", &inteiro);
+    return inteiro;
 }
 
 void exibir_booleano(boolean bool){
