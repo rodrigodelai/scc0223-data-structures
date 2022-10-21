@@ -69,7 +69,7 @@ int carta_extrair_valor(char* simbolo){
     int valor;
 
     if (strcmp(simbolo, "V") == 0 || strcmp(simbolo, "D") == 0 || strcmp(simbolo, "R") == 0) valor = 10;
-    if ((valor = atoi(simbolo)) > 10 || valor < 1) printf("Erro ao extrair valor: %d.\n", ERRO_SIM);
+    else if ((valor = atoi(simbolo)) > 10 || valor < 1) printf("Erro ao extrair valor: %d.\n", ERRO_SIM);
 
     return valor;
 }
@@ -102,7 +102,7 @@ int carta_obter_valor(CARTA* carta){
 
 void carta_exibir(CARTA* carta){
     if (carta == NULL) printf("Erro ao exibir carta: %d.\n", ERRO_NULL);
-    else printf("%s %s\n", carta->naipe, carta->simbolo);
+    else printf("%-10s %2s %10d\n", carta->naipe, carta->simbolo, carta->valor);
 }
 
 boolean carta_destruir(CARTA** carta){
