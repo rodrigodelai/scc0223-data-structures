@@ -169,5 +169,25 @@ boolean baralho_destruir(BARALHO** baralho){
     return TRUE;
 }
 
-void ler_novo_baralho(BARALHO* baralho);
-void jogar_blackjack(BARALHO* baralho); 
+void ler_novo_baralho(BARALHO* baralho){
+    for(int i = 0; i<52; i++){
+        CARTA* carta = carta_criar();
+        carta_definir_naipe(carta, ler_palavra());
+        carta_definir_simbolo(carta, ler_palavra());
+        carta_definir_valor(carta, carta_extrair_valor(carta_obter_simbolo(carta)));
+        baralho_empilhar(baralho, carta);
+    }
+}
+
+void jogar_blackjack(BARALHO* baralho){
+    int soma = 0;
+
+    while (soma < 21){
+        CARTA* desempilhada = baralho_desempilhar(baralho);
+        soma += carta_obter_valor(desempilhada);
+        carta_destruir(&desempilhada);
+    }
+
+    if (soma == 21) printf("Ganhou ;)\n");
+    else printf("Perdeu :(\nSoma :: %d\n", soma);
+}
