@@ -1,6 +1,28 @@
 #include "util.h"
 
-char* ler_parte_do_numero();
+char* ler_numero_completo(){
+    char* numero = NULL;
+    char caractere_atual = getchar();
+    int indice_atual = 0;
+
+    while (caractere_atual == 32 || caractere_atual == '\n' || caractere_atual == '\r') caractere_atual = getchar(); // Limpa o buffer
+    if (caractere_atual == EOF) return NULL; // Sinaliza o fim do arquivo
+
+    do{
+        numero = (char*) realloc(numero, (indice_atual + 2) * sizeof(char));
+        numero[indice_atual] = caractere_atual;
+        
+        indice_atual++;
+        caractere_atual = getchar();
+
+        if (caractere_atual == '\r') caractere_atual = getchar(); // Tratamento para ambiente Windows
+
+    } while (caractere_atual != '\n' && caractere_atual != EOF && caractere_atual != 32);
+
+    numero[indice_atual] = '\0';
+
+    return numero;
+}
 
 char* ler_palavra(){
     char* palavra = (char*) calloc(TAM_MAX, sizeof(char));
@@ -27,7 +49,7 @@ boolean apagar_palavra(char** palavra){
 }
 
 void exibir_booleano(boolean bool){
-    if (bool == 1) printf("true\n");
-    else if (bool == 0) printf("false\n");
+    if (bool == 1) printf("True\n");
+    else if (bool == 0) printf("False\n");
     else printf("Erro ao imprimir booleano: Valor inesperado\n");
 }

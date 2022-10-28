@@ -13,7 +13,7 @@ typedef int boolean;
 #define ERRO_NUM -301    // Ocorre quando uma funcao recebe como parametro um numero invalido;
 #define ERRO_NULL -302   // Ocorre quando uma funcao recebe como parametro um ponteiro que aponta para NULL;
 
-char* ler_parte_do_numero();
+char* ler_numero_completo();
 char* ler_palavra();
 void exibir_palavra(char* palavra);
 boolean apagar_palavra(char** palavra);
