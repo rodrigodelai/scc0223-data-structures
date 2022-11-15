@@ -9,7 +9,7 @@ typedef int boolean;
 #define TRUE 1
 #define FALSE 0
 #define POSITIVO 1
-#define NEGATIVO 0
+#define NEGATIVO -1
 #define TAM_MAX 128
 #define ERRO_MEM -300    // Ocorre quando uma alocacao de momoria falha;
 #define ERRO_NUM -301    // Ocorre quando uma funcao recebe como parametro um numero invalido;

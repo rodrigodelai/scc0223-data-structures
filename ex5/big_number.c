@@ -313,9 +313,20 @@ int big_number_obter_qnt_partes(BIG_NUMBER* big_number){
 
 int big_number_obter_sinal(BIG_NUMBER* big_number){
     if (big_number == NULL){
-        printf("Erro ao obter quantidade de partes do big number: %d\n.", ERRO_NULL);
+        printf("Erro ao obter sinal do big number: %d\n.", ERRO_NULL);
         return POSITIVO;
     }
 
     return big_number->sinal;
+}
+
+boolean big_number_definir_sinal(BIG_NUMBER* big_number, int sinal){
+    if (big_number == NULL){
+        printf("Erro ao definir sinal do big number: %d\n.", ERRO_NULL);
+        return FALSE;
+    }
+
+    big_number->sinal = sinal;
+    
+    return TRUE;
 }

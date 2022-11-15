@@ -82,62 +82,89 @@ BIG_NUMBER* operacao_soma(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
         return FALSE;
     }
 
+    int sinal_op1 = big_number_obter_sinal(operando_1);
+    int sinal_op2 = big_number_obter_sinal(operando_2);
+
+    int partes_op1 = big_number_obter_qnt_partes(operando_1);
+    int partes_op2 = big_number_obter_qnt_partes(operando_2);
+
+    int partes_do_menor = partes_op1 < partes_op2 ? partes_op1 : partes_op2; 
+    int partes_do_maior = partes_op1 > partes_op2 ? partes_op1 : partes_op2; 
+    
+    BIG_NUMBER* numero_com_mais_partes = partes_op1 > partes_op2 ? operando_1 : operando_2;
     BIG_NUMBER* resultado = big_number_criar_numero();
 
-    int partes_1 = big_number_obter_qnt_partes(operando_1);
-    int partes_2 = big_number_obter_qnt_partes(operando_2);
-
-    int menor = partes_1 < partes_2 ? partes_1 : partes_2; 
-    int maior = partes_1 > partes_2 ? partes_1 : partes_2; 
-    
     boolean sobra = FALSE;
+    boolean empresta = FALSE;
 
-    for (int i = 1; i < menor + 1; i++){
-        
-        int parte = big_number_obter_parte(operando_1, i) + big_number_obter_parte(operando_2, i);
+    if (sinal_op1 == sinal_op2){
+        big_number_definir_sinal(resultado, sinal_op1);
 
-        if (sobra){
-            parte++;
-            sobra = FALSE;
-        }
+        for (int i = 1; i <= partes_do_maior; i++){
         
-        if (parte / 1000 < 10) {
-            big_number_adicionar_parte(resultado, parte);
+            int parte = 0;
+
+            if (i <= partes_do_menor)
+                parte = big_number_obter_parte(operando_1, i) + big_number_obter_parte(operando_2, i);
+            else 
+                parte = big_number_obter_parte(numero_com_mais_partes, i);
+
+            if (sobra){
+                parte++;
+                sobra = FALSE;
+            }
+            
+            if (parte / 1000 < 10) {
+                big_number_adicionar_parte(resultado, parte);
+            }
+            else {
+                parte -= 10000;
+                big_number_adicionar_parte(resultado, parte);
+                sobra = TRUE;
+            }
         }
-        else {
-            parte -= 10000;
-            big_number_adicionar_parte(resultado, parte);
-            sobra = TRUE;
-        }
+
+        if (sobra) big_number_adicionar_parte(resultado, 1);
     }
+    else { // Numeros com sinais opostos
+        BIG_NUMBER* numero_negativo = (sinal_op1 == NEGATIVO ? operando_1 : operando_2);
+        BIG_NUMBER* numero_positivo = (sinal_op1 == POSITIVO ? operando_1 : operando_2);
+        big_number_definir_sinal(numero_negativo, POSITIVO);
 
-    
-    BIG_NUMBER* numero_maior = partes_1 > partes_2 ? operando_1 : operando_2;
+        int ajuste = 1;
 
-    for (int i = menor + 1; i < maior + 1; i++){
+        if (operacao_maior(numero_negativo, numero_positivo)){
+            big_number_definir_sinal(resultado, NEGATIVO);
+            ajuste = -1;
+        }
+
+        for (int i = 1; i <= partes_do_maior; i++){
         
-        #ifdef DEBUG
-            printf("i: %d\n", i);
-        #endif
+            int parte = 0;
 
-        int parte = big_number_obter_parte(numero_maior, i);
+            if (i <= partes_do_menor)
+                parte = (big_number_obter_parte(numero_positivo, i) - big_number_obter_parte(numero_negativo, i)) * ajuste;
+            else 
+                parte = big_number_obter_parte(numero_com_mais_partes, i);
 
-        if (sobra){
-            parte++;
-            sobra = FALSE;
+            if (empresta){
+                parte--;
+                empresta = FALSE;
+            }
+
+            if (parte >= 0) {
+                big_number_adicionar_parte(resultado, parte);
+            }
+            else {
+                parte += 10000;
+                big_number_adicionar_parte(resultado, parte);
+                empresta = TRUE;
+            }
         }
-        
-        if (parte / 1000 < 10) {
-            big_number_adicionar_parte(resultado, parte);
-        }
-        else {
-            parte -= 10000;
-            big_number_adicionar_parte(resultado, parte);
-            sobra = TRUE;
-        }
+
+        if (big_number_obter_fim(resultado) == 0) big_number_remover_parte(resultado, partes_do_maior);
+        big_number_definir_sinal(numero_negativo, NEGATIVO);
     }
-
-    if (sobra) big_number_adicionar_parte(resultado, 1);
 
     return resultado;
 }
@@ -148,9 +175,8 @@ boolean operacao_igual(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
         return FALSE;
     }
 
-    if (big_number_obter_qnt_partes(operando_1) != big_number_obter_qnt_partes(operando_2)){
-        return FALSE;
-    }
+    if (big_number_obter_sinal(operando_1) != big_number_obter_sinal(operando_2)) return FALSE;
+    if (big_number_obter_qnt_partes(operando_1) != big_number_obter_qnt_partes(operando_2)) return FALSE;
 
     int auxiliar = big_number_obter_qnt_partes(operando_1) + 1;
 
@@ -168,18 +194,24 @@ boolean operacao_maior(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
         return FALSE;
     }
 
-    if (big_number_obter_qnt_partes(operando_1) < big_number_obter_qnt_partes(operando_2))
-        return FALSE;
+    int sinal_op1 = big_number_obter_sinal(operando_1);
+    int sinal_op2 = big_number_obter_sinal(operando_2);
 
-    if (big_number_obter_qnt_partes(operando_1) > big_number_obter_qnt_partes(operando_2))
-        return TRUE;
+    if (sinal_op1 > sinal_op2) return TRUE;
+    if (sinal_op1 < sinal_op2) return FALSE;
+
+    int qnt_partes_op1 = big_number_obter_qnt_partes(operando_1); 
+    int qnt_partes_op2 = big_number_obter_qnt_partes(operando_2); 
+
+    if (qnt_partes_op1 * sinal_op1 < qnt_partes_op2 * sinal_op2) return FALSE;
+    if (qnt_partes_op1 * sinal_op1 > qnt_partes_op2 * sinal_op2) return TRUE;
     
     int auxiliar = big_number_obter_qnt_partes(operando_1) + 1;
 
     while (--auxiliar){
-        if (big_number_obter_parte(operando_1, auxiliar) > big_number_obter_parte(operando_2, auxiliar))
+        if (big_number_obter_parte(operando_1, auxiliar) * sinal_op1 > big_number_obter_parte(operando_2, auxiliar) * sinal_op2)
             return TRUE;
-        if (big_number_obter_parte(operando_1, auxiliar) < big_number_obter_parte(operando_2, auxiliar))
+        if (big_number_obter_parte(operando_1, auxiliar) * sinal_op2 < big_number_obter_parte(operando_2, auxiliar) * sinal_op2)
             return FALSE;
     }
 
@@ -192,22 +224,7 @@ boolean operacao_menor(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
         return TRUE;
     }
 
-    if (big_number_obter_qnt_partes(operando_1) < big_number_obter_qnt_partes(operando_2))
-        return TRUE;
-
-    if (big_number_obter_qnt_partes(operando_1) > big_number_obter_qnt_partes(operando_2))
-        return FALSE;
-    
-    int auxiliar = big_number_obter_qnt_partes(operando_1) + 1;
-
-    while (--auxiliar){
-        if (big_number_obter_parte(operando_1, auxiliar) > big_number_obter_parte(operando_2, auxiliar))
-            return FALSE;
-        if (big_number_obter_parte(operando_1, auxiliar) < big_number_obter_parte(operando_2, auxiliar))
-            return TRUE;
-    }
-
-    return FALSE;
+    return operacao_maior(operando_2, operando_1);
 }
 
 void operar_dois_big_numbers(){
@@ -239,5 +256,6 @@ void operar_dois_big_numbers(){
 int ler_qnt_de_operacoes(){
     int operacoes;
     scanf("%d", &operacoes);
+    if (operacoes < 0) operacoes = 0;
     return operacoes;
 }
