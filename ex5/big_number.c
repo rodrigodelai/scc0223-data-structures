@@ -11,6 +11,7 @@ struct big_number_st{
     NO* inicio; 
     NO* fim;
     int qnt_partes;
+    int sinal;
 };
 
 static NO* criar_no(){
@@ -53,6 +54,7 @@ BIG_NUMBER* big_number_criar_numero(){
     big_number->inicio = NULL;
     big_number->fim = NULL;
     big_number->qnt_partes = 0;
+    big_number->sinal = POSITIVO;
 
     return big_number;
 }
@@ -64,6 +66,14 @@ boolean big_number_definir_numero(BIG_NUMBER* big_number, char* numero){
     }
 
     int algarismos = strlen(numero);
+    int ajuste = 0;
+
+    if (numero[0] == '-'){
+        big_number->sinal = NEGATIVO;
+        algarismos--;
+        ajuste++;
+    }
+
     int partes = algarismos % 4 == 0 ? algarismos / 4 : algarismos / 4 + 1;  
 
     #ifdef DEBUG
@@ -75,7 +85,7 @@ boolean big_number_definir_numero(BIG_NUMBER* big_number, char* numero){
         int indice;
         int passo;
 
-        indice = algarismos-4*i < 0 ? 0 : algarismos-4*i;
+        indice = algarismos-4*i < 0 ? 0 + ajuste : algarismos-4*i + ajuste;
         passo = algarismos-4*i < 0 ? algarismos % 4 : 4;
 
         #ifdef DEBUG
@@ -140,9 +150,12 @@ void big_number_exibir_numero(BIG_NUMBER* big_number){
         printf("Erro ao exibir numero: %d\n.", ERRO_NULL);
     }
     else{
+        if (big_number->sinal == NEGATIVO) printf("-");
         int auxiliar = big_number->qnt_partes + 1;
         while (--auxiliar) big_number_exibir_parte(big_number, auxiliar);
     }
+
+    printf("\n");
 }
 
 boolean big_number_destruir_numero(BIG_NUMBER** big_number){
@@ -190,12 +203,12 @@ boolean big_number_adicionar_parte(BIG_NUMBER* big_number, int parte_do_numero){
 
 int big_number_obter_parte(BIG_NUMBER* big_number, int posicao){
     if (big_number == NULL){
-        printf("Erro ao obter parte: %d\n.", ERRO_NULL);
+        printf("Erro ao obter parte: %d.\n", ERRO_NULL);
         return 0;
     }
 
     if (posicao > big_number->qnt_partes || posicao < 1){
-        printf("Erro ao obter parte: %d\n.", ERRO_NUM);
+        printf("Erro ao obter parte: %d.\n", ERRO_NUM);
         return 0;
     }
 
@@ -217,7 +230,7 @@ void big_number_exibir_parte(BIG_NUMBER* big_number, int posicao){
         printf("%d", big_number_obter_parte(big_number, posicao));
     }
     else{
-        printf("%04d", big_number_obter_parte(big_number, posicao));
+         printf("%04d", big_number_obter_parte(big_number, posicao));
     }
 }
 
@@ -298,3 +311,11 @@ int big_number_obter_qnt_partes(BIG_NUMBER* big_number){
     return big_number->qnt_partes;
 }
 
+int big_number_obter_sinal(BIG_NUMBER* big_number){
+    if (big_number == NULL){
+        printf("Erro ao obter quantidade de partes do big number: %d\n.", ERRO_NULL);
+        return POSITIVO;
+    }
+
+    return big_number->sinal;
+}

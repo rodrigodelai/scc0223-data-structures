@@ -19,5 +19,6 @@ int big_number_remover_parte(BIG_NUMBER* big_number, int posicao);
 int big_number_obter_inicio(BIG_NUMBER* big_number);
 int big_number_obter_fim(BIG_NUMBER* big_number);
 int big_number_obter_qnt_partes(BIG_NUMBER* big_number);
+int big_number_obter_sinal(BIG_NUMBER* big_number);
 
 #endif // BIG_NUMBER_H
