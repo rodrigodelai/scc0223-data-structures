@@ -15,9 +15,6 @@ boolean operacao_igual(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2);
 boolean operacao_maior(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2);
 boolean operacao_menor(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2);
 
-int operacao_somar_partes(int parte_1, int parte_2);
-int operacao_comparar_partes(int parte_1, int parte_2);
-
 int ler_qnt_de_operacoes();
 void operar_dois_big_numbers();
 

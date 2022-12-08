@@ -178,10 +178,10 @@ boolean operacao_igual(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
     if (big_number_obter_sinal(operando_1) != big_number_obter_sinal(operando_2)) return FALSE;
     if (big_number_obter_qnt_partes(operando_1) != big_number_obter_qnt_partes(operando_2)) return FALSE;
 
-    int auxiliar = big_number_obter_qnt_partes(operando_1) + 1;
+    int qnt_partes = big_number_obter_qnt_partes(operando_1);
 
-    while (--auxiliar){
-        if (big_number_obter_parte(operando_1, auxiliar) != big_number_obter_parte(operando_2, auxiliar))
+    for(int i = 1; i <= qnt_partes; i++){
+        if (big_number_obter_parte(operando_1, i) != big_number_obter_parte(operando_2, i))
             return FALSE;
     }
 
@@ -205,7 +205,7 @@ boolean operacao_maior(BIG_NUMBER* operando_1, BIG_NUMBER* operando_2){
 
     if (qnt_partes_op1 * sinal_op1 < qnt_partes_op2 * sinal_op2) return FALSE;
     if (qnt_partes_op1 * sinal_op1 > qnt_partes_op2 * sinal_op2) return TRUE;
-    
+
     int auxiliar = big_number_obter_qnt_partes(operando_1) + 1;
 
     while (--auxiliar){
