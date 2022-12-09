@@ -3,7 +3,7 @@
 
 #include "util.h"
 
-typedef struct carta_st CONTA;
+typedef struct conta_st CONTA;
 
 CONTA* conta_criar();
 boolean conta_definir_cpf(CONTA* conta, long int cpf);
@@ -16,6 +16,8 @@ long int conta_obter_cpf(CONTA* conta);
 char* conta_obter_nome(CONTA* conta);
 int conta_obter_idade(CONTA* conta);
 long int conta_obter_saldo(CONTA* conta);
+char* conta_converter_cpf(long cpf);
+char* conta_converter_saldo(long saldo);
 void conta_exibir(CONTA* conta);
 boolean conta_destruir(CONTA** carta);
 
