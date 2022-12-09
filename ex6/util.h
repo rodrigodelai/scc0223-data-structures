@@ -16,8 +16,8 @@ typedef int boolean;
 
 int ler_inteiro();
 char* ler_dado();
-void exibir_dado(char* palavra);
-boolean apagar_dado(char** palavra);
+void exibir_dado(char* dado);
+boolean apagar_dado(char** dado);
 void exibir_booleano();
 
 #endif // UTIL_H

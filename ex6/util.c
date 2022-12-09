@@ -7,7 +7,7 @@ int ler_inteiro(){
 }
 
 char* ler_dado(){
-    char separador = ','; // Caracter que sinaliza o fim do dado
+    char separador = ';'; // Caracter que sinaliza o fim do dado
     char* dado = NULL;
     char caractere_atual = getchar();
     int indice_atual = 0;
@@ -31,19 +31,19 @@ char* ler_dado(){
     return dado;
 }
 
-void exibir_palavra(char* palavra){
-    if (palavra == NULL) printf("Erro ao exibir palavra: %d\n", ERRO_NULL);
-    else printf("%s\n", palavra);
+void exibir_dado(char* dado){
+    if (dado == NULL) printf("Erro ao exibir dado: %d\n", ERRO_NULL);
+    else printf("%s\n", dado);
 }
 
-boolean apagar_palavra(char** palavra){
-    if (palavra == NULL || *palavra == NULL){
-        printf("Erro ao excluir palavra: %d\n", ERRO_NULL);
+boolean apagar_dado(char** dado){
+    if (dado == NULL || *dado == NULL){
+        printf("Erro ao excluir dado: %d\n", ERRO_NULL);
         return FALSE;
     }
 
-    free(*palavra);
-    *palavra = NULL;
+    free(*dado);
+    *dado = NULL;
 
     return TRUE;
 }
