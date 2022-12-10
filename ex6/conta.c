@@ -92,17 +92,25 @@ long conta_extrair_cpf(char* str_cpf){
         return 0;
     }
 
-    if (strlen(str_cpf) != 14){
+    int tamanho = strlen(str_cpf);
+
+    if (tamanho != 14){
         printf("Erro ao extrair cpf: %d.\n", ERRO_SIM);
         return 0;
     }
     
     char* auxiliar = (char*) malloc(sizeof(char) * 12);
 
-    strncpy(auxiliar, str_cpf, 3);
-    strncpy(auxiliar + 3, str_cpf + 4, 3);
-    strncpy(auxiliar + 6, str_cpf + 8, 3);
-    strncpy(auxiliar + 9, str_cpf + 12, 2);
+    int indice = 10;
+
+    while (tamanho--){
+        if ((tamanho + 1) % 4 == 0)
+            tamanho--;
+
+        auxiliar[indice] = str_cpf[tamanho];
+        indice--;
+    }
+
     auxiliar[11] = '\0';
 
     long cpf= atol(auxiliar);
@@ -128,12 +136,20 @@ long conta_extrair_saldo(char* str_saldo){
 
     char* auxiliar = (char*) calloc(12, sizeof(char));
 
-    strncpy(auxiliar, str_saldo, tamanho-3);
-    strncpy(auxiliar + tamanho - 3, str_saldo + tamanho - 2, 2);
+    int indice = tamanho - 2;
+    int marcador = tamanho - 3;
+
+    while (tamanho--){
+        if (tamanho == marcador)
+            tamanho--;
+
+        auxiliar[indice] = str_saldo[tamanho];
+        indice--;
+    }
 
     auxiliar[11] = '\0';
 
-    long int saldo = atol(auxiliar);
+    long saldo = atol(auxiliar);
 
     apagar_dado(&auxiliar);
     apagar_dado(&str_saldo);
