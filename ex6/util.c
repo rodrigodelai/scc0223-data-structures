@@ -12,17 +12,21 @@ char* ler_dado(){
     char caractere_atual = getchar();
     int indice_atual = 0;
 
-    while (caractere_atual == separador || caractere_atual == '\n' || caractere_atual == '\r') caractere_atual = getchar(); // Limpa o buffer
-    if (caractere_atual == EOF) return NULL; // Sinaliza o fim do arquivo
+    while (caractere_atual == separador || caractere_atual == '\n' || caractere_atual == '\r') // Limpa o buffer
+        caractere_atual = getchar(); 
 
-    do{
+    if (caractere_atual == EOF) // Sinaliza o fim do arquivo
+        return NULL; 
+
+    do {
         dado = (char*) realloc(dado, (indice_atual + 2) * sizeof(char));
         dado[indice_atual] = caractere_atual;
         
         indice_atual++;
         caractere_atual = getchar();
 
-        if (caractere_atual == '\r') caractere_atual = getchar(); // Tratamento para ambiente Windows
+        if (caractere_atual == '\r') // Tratamento para ambiente Windows
+            caractere_atual = getchar();
 
     } while (caractere_atual != separador && caractere_atual != '\n' && caractere_atual != EOF);
 
@@ -32,8 +36,10 @@ char* ler_dado(){
 }
 
 void exibir_dado(char* dado){
-    if (dado == NULL) printf("Erro ao exibir dado: %d\n", ERRO_NULL);
-    else printf("%s\n", dado);
+    if (dado == NULL) 
+        printf("Erro ao exibir dado: %d\n", ERRO_NULL);
+    else 
+        printf("%s\n", dado);
 }
 
 boolean apagar_dado(char** dado){
@@ -49,7 +55,10 @@ boolean apagar_dado(char** dado){
 }
 
 void exibir_booleano(boolean bool){
-    if (bool == 1) printf("true\n");
-    else if (bool == 0) printf("false\n");
-    else printf("Erro ao imprimir booleano: Valor inesperado\n");
+    if (bool == 1) 
+        printf("true\n");
+    else if (bool == 0) 
+        printf("false\n");
+    else 
+        printf("Erro ao imprimir booleano: valor inesperado\n");
 }

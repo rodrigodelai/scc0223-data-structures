@@ -47,7 +47,8 @@ boolean conta_definir_nome(CONTA* conta, char* nome){
         return FALSE;
     }
 
-    if (conta->nome != NULL) apagar_dado(&conta->nome);
+    if (conta->nome != NULL)
+        apagar_dado(&conta->nome);
 
     conta->nome = nome;
     return TRUE;
@@ -70,7 +71,7 @@ boolean conta_definir_idade(CONTA* conta, int idade){
 }
 
 boolean conta_definir_saldo(CONTA* conta, long saldo){
-     if (conta == NULL){
+    if (conta == NULL){
         printf("Erro ao definir cpf: %d.\n", ERRO_NULL);
         return FALSE;
     }
@@ -91,7 +92,7 @@ long conta_extrair_cpf(char* str_cpf){
         return 0;
     }
 
-     if (strlen(str_cpf) != 14){
+    if (strlen(str_cpf) != 14){
         printf("Erro ao extrair cpf: %d.\n", ERRO_SIM);
         return 0;
     }
@@ -120,7 +121,7 @@ long conta_extrair_saldo(char* str_saldo){
 
     int tamanho = strlen(str_saldo);
 
-     if (tamanho > 11){
+    if (tamanho > 11){
         printf("Erro ao extrair saldo: %d.\n", ERRO_SIM);
         return 0;
     }
@@ -192,7 +193,8 @@ char* conta_converter_cpf(long cpf){
     int indice = 13;
 
     while (tamanho--){
-        if ((indice + 1) % 4 == 0) indice--;
+        if ((indice + 1) % 4 == 0) 
+            indice--;
         str_cpf[indice] = auxiliar[tamanho];
         indice--;
     }
@@ -255,7 +257,7 @@ void conta_exibir(CONTA* conta){
 
 boolean conta_destruir(CONTA** conta){
     if (conta == NULL || *conta == NULL){
-        printf("Erro ao exibir conta: %d.\n", ERRO_NULL);
+        printf("Erro ao destruir conta: %d.\n", ERRO_NULL);
         return FALSE;
     }
 

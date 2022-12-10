@@ -88,13 +88,17 @@ boolean banco_adicionar_conta (BANCO* banco, CONTA* conta){
 }
 
 static NO* banco_buscar_no(NO *raiz, long cpf){
-    if (raiz == NULL) return NULL;
+    if (raiz == NULL) 
+        return NULL;
 
     long cpf_no_atual = conta_obter_cpf(raiz->conta);
 
-    if (cpf == cpf_no_atual) return raiz;
-    else if (cpf < cpf_no_atual) return banco_buscar_no(raiz->esquerda, cpf);
-    else return banco_buscar_no(raiz->direita, cpf);
+    if (cpf == cpf_no_atual) 
+        return raiz;
+    else if (cpf < cpf_no_atual) 
+        return banco_buscar_no(raiz->esquerda, cpf);
+    else 
+        return banco_buscar_no(raiz->direita, cpf);
 }
 
 CONTA* banco_buscar_conta(BANCO* banco, long cpf){
@@ -104,22 +108,20 @@ CONTA* banco_buscar_conta(BANCO* banco, long cpf){
     }
 
     NO* retorno = banco_buscar_no(banco->raiz, cpf);
-    if (retorno != NULL) return retorno->conta;
+    if (retorno != NULL) 
+        return retorno->conta;
 
     return NULL;
 }
 
 static NO* substituir_pelo_minimo_da_direita(NO* substitui, NO* raiz, NO* anterior){
-    if (substitui->esquerda != NULL){
+    if (substitui->esquerda != NULL)
         return substituir_pelo_minimo_da_direita(substitui->esquerda, raiz, substitui);
-    }
     
-    if (raiz == anterior){
+    if (raiz == anterior)
         anterior->direita = substitui->direita;
-    }
-    else {
+    else 
         anterior->esquerda = substitui->direita;
-    }
 
     CONTA* removida = raiz->conta;
     raiz->conta = substitui->conta;
@@ -131,24 +133,31 @@ static NO* substituir_pelo_minimo_da_direita(NO* substitui, NO* raiz, NO* anteri
 static NO* banco_remover_no(NO** raiz, long cpf){
     NO* removido;
 
-    if (*raiz == NULL) return NULL;
+    if (*raiz == NULL) 
+        return NULL;
 
     long cpf_no_atual = conta_obter_cpf((*raiz)->conta);
 
-    if (cpf == cpf_no_atual){ // Encontrei o no
-        if ((*raiz)->esquerda == NULL || (*raiz)->direita == NULL){ //Caso 1 ou 2;
+    if (cpf == cpf_no_atual){
+        if ((*raiz)->esquerda == NULL || (*raiz)->direita == NULL){
             removido = *raiz;
-            if((*raiz)->esquerda == NULL) *raiz = (*raiz)->direita;
-            else *raiz = (*raiz)->esquerda;
+
+            if((*raiz)->esquerda == NULL) 
+                *raiz = (*raiz)->direita;
+            else 
+                *raiz = (*raiz)->esquerda;
         }
-        else { // Caso 3
+        else {
             removido = substituir_pelo_minimo_da_direita((*raiz)->direita, *raiz, *raiz);
         }
+
         return removido;
     }
-    else { // Nao encontrei o no
-        if (cpf < cpf_no_atual) return banco_remover_no(&(*raiz)->esquerda, cpf);
-        else return banco_remover_no(&(*raiz)->direita, cpf);
+    else {
+        if (cpf < cpf_no_atual) 
+            return banco_remover_no(&(*raiz)->esquerda, cpf);
+        else 
+            return banco_remover_no(&(*raiz)->direita, cpf);
     }
 }
 
@@ -180,9 +189,8 @@ CONTA* banco_obter_raiz(BANCO* banco){
 }
 
 static int banco_calcular_profundidade(NO* raiz){
-    if (raiz == NULL){
+    if (raiz == NULL)
         return 0;
-    }
 
     int altura_arv_esq = banco_calcular_profundidade(raiz->esquerda);
     int altura_arv_dir = banco_calcular_profundidade(raiz->direita);
@@ -323,14 +331,23 @@ void realizar_operacao(BANCO* banco){
 
         if (opcao_busca(opcao)){
             CONTA* retorno = banco_buscar_conta(banco, conta_extrair_cpf(ler_dado()));
-            if (retorno == NULL) printf("Pessoa nao encontrada.\n");
-            else conta_exibir(retorno);
+
+            if (retorno == NULL) 
+                printf("Pessoa nao encontrada.\n");
+            else 
+                conta_exibir(retorno);
         }
         else if (opcao_remocao(opcao)){
             CONTA* retorno = banco_remover_conta(banco, conta_extrair_cpf(ler_dado()));
-            if (retorno == NULL) printf("Pessoa nao encontrada.\n");
-            else conta_exibir(retorno);
-            conta_destruir(&retorno);
+
+            if (retorno == NULL) {
+                printf("Pessoa nao encontrada.\n");
+            }
+            else {
+                conta_exibir(retorno);
+                conta_destruir(&retorno);
+            }
+
             banco_exibir_cpfs(banco);
         }
         else if (opcao_insercao(opcao)){
