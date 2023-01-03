@@ -63,3 +63,7 @@ void exibir_booleano(boolean bool){
     else if (bool == 0) printf("false\n");
     else printf("Erro ao imprimir booleano: Valor inesperado\n");
 }
+
+int max(int num1, int num2){
+    return (num1 > num2 ? num1 : num2);
+}
