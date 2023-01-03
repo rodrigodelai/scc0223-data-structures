@@ -1,7 +1,6 @@
 #include "jogo.h"
 
-struct jogo_st
-{
+struct jogo_st{
     char* nome;
     char* empresa;
     int ano;
@@ -11,7 +10,7 @@ JOGO* jogo_criar(){
     JOGO* novo_jogo = (JOGO*) calloc(1, sizeof(JOGO));
     
     if (novo_jogo == NULL)
-        printf("Erro ao criar jogo: %d\n", ERRO_NULL);
+        printf("Erro ao criar jogo: %d\n", ERRO_MEM);
 
     return novo_jogo;
 }
@@ -84,9 +83,9 @@ void jogo_exibir(JOGO* jogo){
         return;
     }
     
-    printf("Nome:    %35s\n", jogo->nome);
-    printf("Empresa: %35s\n", jogo->empresa);
-    printf("Ano:     %35d\n", jogo->ano);
+    printf("Nome:    %40s\n", jogo->nome);
+    printf("Empresa: %40s\n", jogo->empresa);
+    printf("Ano:     %40d\n", jogo->ano);
 }
 
 boolean jogo_destruir(JOGO** jogo){
@@ -94,6 +93,10 @@ boolean jogo_destruir(JOGO** jogo){
         printf("Erro ao destruir jogo: %d\n", ERRO_NULL);
         return FALSE;
     }
+
+    #ifdef DEBUG
+        printf("Jogo \"%s\" destruido com sucesso.\n", jogo_obter_nome(*jogo));
+    #endif
 
     free((*jogo)->nome);
     free((*jogo)->empresa);
