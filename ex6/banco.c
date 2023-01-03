@@ -10,7 +10,7 @@ struct no_st{
 
 struct banco_st{
     NO* raiz;
-    int profundidade;
+    int altura;
 };
 
 BANCO* banco_criar(){
@@ -22,7 +22,7 @@ BANCO* banco_criar(){
     }
 
     banco->raiz = NULL;
-    banco->profundidade = 0;
+    banco->altura = 0;
     
     return banco;
 }
@@ -188,24 +188,24 @@ CONTA* banco_obter_raiz(BANCO* banco){
     return banco->raiz->conta;
 }
 
-static int banco_calcular_profundidade(NO* raiz){
+static int banco_calcular_altura(NO* raiz){
     if (raiz == NULL)
-        return 0;
+        return -1;
 
-    int altura_arv_esq = banco_calcular_profundidade(raiz->esquerda);
-    int altura_arv_dir = banco_calcular_profundidade(raiz->direita);
+    int altura_arv_esq = banco_calcular_altura(raiz->esquerda);
+    int altura_arv_dir = banco_calcular_altura(raiz->direita);
 
     return altura_arv_esq > altura_arv_dir ? altura_arv_esq + 1 : altura_arv_dir + 1;
 }
 
 
-int banco_obter_profundidade(BANCO* banco){
+int banco_obter_altura(BANCO* banco){
     if (banco == NULL){
-        printf("Erro ao obter profundidade: %d\n", ERRO_NULL);
+        printf("Erro ao obter altura: %d\n", ERRO_NULL);
         return -1;
     }
 
-    return (banco->profundidade = banco_calcular_profundidade(banco->raiz) - 1);
+    return (banco->altura = banco_calcular_altura(banco->raiz));
 }
 
 
@@ -246,7 +246,7 @@ boolean banco_destruir(BANCO** banco){
     recursao_destruir((*banco)->raiz);
 
     (*banco)->raiz = NULL;
-    (*banco)->profundidade = 0;
+    (*banco)->altura = 0;
 
     free(*banco);
     *banco = NULL;
@@ -361,5 +361,6 @@ void realizar_operacao(BANCO* banco){
             apagar_dado(&opcao);
             realizar_operacao(banco);
         }
+        printf("\n");
     }
 }

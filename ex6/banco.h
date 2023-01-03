@@ -10,7 +10,7 @@ boolean banco_adicionar_conta (BANCO* banco, CONTA* conta);
 CONTA* banco_buscar_conta(BANCO* banco, long cpf);
 CONTA* banco_remover_conta(BANCO* banco, long cpf);
 CONTA* banco_obter_raiz(BANCO* banco);
-int banco_obter_profundidade(BANCO* banco);
+int banco_obter_altura(BANCO* banco);
 void banco_exibir_cpfs(BANCO* banco);
 boolean banco_destruir(BANCO** banco);
 
