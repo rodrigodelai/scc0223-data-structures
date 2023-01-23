@@ -10,6 +10,14 @@ body {
     background-color: #1C2333;
 }
 
+b {
+    font-weight: 600;
+}
+
+i {
+    font-style: italic;
+}
+
 /* ----- Header -----*/
 
 header {
@@ -48,10 +56,6 @@ header li:active {
 
 /* ----- Main -----*/
 
-/* main {
-    display: flex;
-} */
-
 main section {
     width: 65%;
     display: inline-block;
@@ -77,7 +81,7 @@ main aside {
     box-sizing: border-box;
 }
 
-main h1 {
+main h2 {
     align-items: center;
     display: flex;
     font-size: 1.3em;
@@ -96,42 +100,66 @@ main h1 {
 }
 
 .card {
-    padding: 0.6em;
-    border-radius: 0.4em;
     background-color: white;
+    border-radius: 0.4em;
+    font-size: 0.94em;
+    font-weight: 400;
+    line-height: 1.1;
     margin: 0 0.5em 0.5em 0;
+    padding: 0.6em;
+    text-align: justify;
 }
 
-.card:last-child {
+.card > * {
+    margin-bottom: 1em;
+}
+
+.card > *:last-child {
     margin-bottom: 0;
 }
 
-.card h2 {
+.card h3 {
     font-weight: 700;
     margin-bottom: 1em;
 }
 
-.card p {
-    margin-bottom: 1em;
-    font-size: 0.92em;
-    text-align: justify;
-    font-weight: 400;
-    line-height: 1.1;
+.card ol li {
+    list-style-type:decimal;
+    margin: 0 0 0.2em 1em;
 }
 
-.card p:last-child {
-    margin-bottom: 0.2em;
+.card ul li {
+    list-style-type: disc;
+    margin: 0 0 0.2em 1em;
 }
 
-.card span {
-    color: purple;
+.box-code > .code {
     display: block;
-    font-family: monospace;
-    background-color: rgb(242, 238, 238);
     padding: 0.2em 0.5em;
 }
 
-#ex2 {
+.code {
+    background-color: rgb(242, 238, 238);
+    color: purple;
+    font-family: monospace;
+    padding: 0 0.2em;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.ex6 pre {
+    display: inline-block;
+    height: 185px;
+    overflow-x:scroll;
+    width: 250px;
+} 
+
+.ex2,
+.ex3,
+.ex4,
+.ex5,
+.ex6,
+.ex7,
+.ex8 {
     display: none;
-    transition: 0.3s;
 }
