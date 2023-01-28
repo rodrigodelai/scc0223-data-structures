@@ -1,5 +1,5 @@
 MAIN = main.c
-UTIL = ponto.c caminho.c
+UTIL = ponto.c caminho.c util.c
 BINARY = programa
 
 all:
