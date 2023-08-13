@@ -2,9 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
-    <title>Estruturas de Dados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Dados em C</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./js/script.js"></script>
@@ -12,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class="basic">
                 <li>Exercício 1</li>
                 <li>Exercício 2</li>
                 <li>Exercício 3</li>
@@ -25,15 +24,15 @@
         </nav>
     </header>
     <main>
-        <section>
-            <iframe src="https://replit.com/@teste-programas/ex1-pontos-cartesianos?#main.c"></iframe>
-        </section><aside>
-            <h2 class="ex1">Exercício 1: Pontos Cartesianos</h2>
-            <div class="content ex1">
-                <div class="card">
-                    <h3>Aviso</h3>
-                    <p>Não é bug não. Comecei a adaptar os programas para colocar aqui e vi que tava fazendo um trabalho porco... Então vou deixar para outro momento. Agora tenho outras prioridades. Até lá, caso tenha interesse, veja os códigos direto pelo <a href="https://github.com/rodrigodelai/scc0223-estruturas-de-dados">Github</a>. Até breve!</p>
-                </div>
+        <section class="basic">
+            SECTION
+        </section>
+        <aside>
+            <!-- Start of section 1 -->
+            <section class="title ex1">
+                <h2>Exercício 1: Pontos Cartesianos</h2>
+            </section>
+            <section class="content-cards ex1">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste primeiro exercício prático é revisar tópicos que já foram vistos em disciplinas anteriores e que serão essenciais para os próximos trabalhos e atividades.</p>
@@ -48,20 +47,20 @@
                     <h3>Entrada</h3>
                     <p>Seu algoritmo deve receber primeiro um valor do tipo inteiro N, que representa a quantidade de pontos a serem lidos em sequência. Após isso, seu programa deve ler N pares de valores do tipo ponto flutuante na forma : X Y.</p>
                     <p>Exemplo de entrada:</p>
-                    <div class="box-code">
-                        <span class="code">3 &nbsp;</span>
-                        <span class="code">0 0</span>
-                        <span class="code">3 0</span>
-                        <span class="code">6 4</span>
-                    </div>
+                    <code>
+                        <p>3 </p>
+                        <p>0 0</p>
+                        <p>3 0</p>
+                        <p>6 4</p>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Saída</h3>
                     <p>Como saída, seu programa deve retornar um valor do tipo ponto flutuante, com precisão de duas casas decimais, que representa a distância total percorrida, passando por todos os pontos na ordem em que foram lidos.</p>
                     <p>Saída da caso acima:</p>
-                    <div class="box-code">
-                        <span class="code">8.00</span>
-                    </div>
+                    <code>
+                        <p>8.00</p>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Observações da implementação</h3>
@@ -71,9 +70,13 @@
                     <p>Escrever um arquivo Makefile que será responsável por gerenciar a execução do projeto dentro da plataforma run.codes
                     </p>
                 </div>
-            </div>
-            <h2 class="ex2">Exercício 2: Catálogo de Jogos</h2>
-            <div class="content ex2">
+            </section>
+            <!-- End of section 1 -->
+            <!-- Start of section 2 -->
+            <section class="title ex2">
+                <h2>Exercício 2: Catálogo de Jogos</h2>
+            </section>
+            <section class="content-cards ex2">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste primeiro exercício prático é revisar tópicos que já foram vistos em disciplinas anteriores e que serão essenciais para os próximos trabalhos e atividades.</p>
@@ -84,9 +87,9 @@
                     <p>Um site de jogos eletrônicos perdeu o seu catálogo e quer refazê-lo. Você foi contratado para resolver esse problema e deve criar um programa que gerencie os jogos desse site. Isto é, permita o armazenamento e acesso às informações dos produtos e seus dados conforme o pedido do usuário.</p>
                     <p>Espera-se que seu programa seja capaz atender aos seguintes requisitos:</p>
                     <ol>
-                        <li>Armazenar as informações de um jogo: <span class="code">nome</span>, <span class="code">empresa</span>, <span class="code">ano</span>. </li>
-                        <li>Buscar pelos jogos lançados em um determinado <span class="code">ano</span>.</li>
-                        <li>Buscar pelos jogos criados por uma determinada <span class="code">empresa</span>.</li>
+                        <li>Armazenar as informações de um jogo: <code>nome</code>, <code>empresa</code>, <code >ano</code>. </li>
+                        <li>Buscar pelos jogos lançados em um determinado <code>ano</code>.</li>
+                        <li>Buscar pelos jogos criados por uma determinada <code>empresa</code>.</li>
                     </ol>
                 </div>
                 <div class="card">
@@ -97,49 +100,49 @@
                         <li>Empresa</li>
                         <li>Ano</li>
                     </ol>
-                    <p>Até ler a letra <span class="code">"F"</span> (maiúscula). Após a primeira letra <span class="code">"F"</span>, seu código deve esperar por um próximo caractere:</p>
+                    <p>Até ler a letra <code>"F"</code> (maiúscula). Após a primeira letra <code>"F"</code>, seu código deve esperar por um próximo caractere:</p>
                     <ul>
-                        <li><span class="code">"A"</span> correspondendo à opção de busca por <b>ano</b>.</li>
-                        <li><span class="code">"E"</span> - correspondendo à opção de busca por <b>empresa produtora</b></li>
+                        <li><code>"A"</code> correspondendo à opção de busca por <b>ano</b>.</li>
+                        <li><code>"E"</code> - correspondendo à opção de busca por <b>empresa produtora</b></li>
                     </ul>
-                    <p>Deve continuar realizando as operações requisitadas até ler novamente a letra <span class="code">"F"</span>, marcando o fim do algoritmo.</p>
-                    <p>Exemplo de entrada</p>
-                    <div class="box-code">
-                        <span class="code">Horizon Zero Dawn</span>
-                        <span class="code">Guerrilla Games</span>
-                        <span class="code">2017</span>
-                        <span class="code">Killzone</span>
-                        <span class="code">Guerrilla Games</span>
-                        <span class="code">2004</span>
-                        <span class="code">Crash Bandicoot</span>
-                        <span class="code">Naughty Dog</span>
-                        <span class="code">1999</span>
-                        <span class="code">F</span>
-                        <span class="code">A</span>
-                        <span class="code">2004</span>
-                        <span class="code">A</span>
-                        <span class="code">2000</span>
-                        <span class="code">E</span>
-                        <span class="code">Guerrilla Games</span>
-                        <span class="code">F</span>        
-                    </div>
+                    <p>Deve continuar realizando as operações requisitadas até ler novamente a letra <code>"F"</code>, marcando o fim do algoritmo.</p>
+                    <p>Exemplo de entrada:</p>
+                    <code>
+                        <p>Horizon Zero Dawn</p>
+                        <p>Guerrilla Games</p>
+                        <p>2017</p>
+                        <p>Killzone</p>
+                        <p>Guerrilla Games</p>
+                        <p>2004</p>
+                        <p>Crash Bandicoot</p>
+                        <p>Naughty Dog</p>
+                        <p>1999</p>
+                        <p>F</p>
+                        <p>A</p>
+                        <p>2004</p>
+                        <p>A</p>
+                        <p>2000</p>
+                        <p>E</p>
+                        <p>Guerrilla Games</p>
+                        <p>F</p>        
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Saída</h3>
-                    <p>Como saída, seu programa deve retornar a listagem dos nomes dos jogos pesquisados de acordo como o parâmetro determinado. Caso não haja jogos registrados que satisfaçam o critério, seu programa deve responder com <span class="code">"Nada encontrado"</span>.</p>
+                    <p>Como saída, seu programa deve retornar a listagem dos nomes dos jogos pesquisados de acordo como o parâmetro determinado. Caso não haja jogos registrados que satisfaçam o critério, seu programa deve responder com <code>"Nada encontrado"</code>.</p>
                     <p>Saída da caso acima:</p>
-                    <div class="box-code">
-                        <span class="code">Killzone</span>
-                        <span class="code">Nada encontrado</span>
-                        <span class="code">Horizon Zero Dawn</span>
-                        <span class="code">Killzone</span>
-                    </div>
+                    <code>
+                        <p>Killzone</p>
+                        <p>Nada encontrado</p>
+                        <p>Horizon Zero Dawn</p>
+                        <p>Killzone</p>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Observações da implementação</h3>
                     <p>Como é descrito na sessão objetivos desse documento, não queremos apenas que os alunos resolvam o problema, mas que utilizem métodos que serão comuns no decorrer da disciplina.</p>
-                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <span class="code">jogo</span> e o objeto <span class="code">catalogo</span> de forma abstrata, isto é, com uma <span class="code">struct</span> para cada. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução.</p>
-                    <p>Utilizar múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> para separar a implementação e a responsabilidade dos métodos de cada objeto (<span class="code">jogo.c</span> e <span class="code">catalogo.c</span>). Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
+                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <code>jogo</code> e o objeto <code>catalogo</code> de forma abstrata, isto é, com uma <code>struct</code> para cada. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução.</p>
+                    <p>Utilizar múltiplos arquivos <code>.c</code> e <code>.h</code> para separar a implementação e a responsabilidade dos métodos de cada objeto (<code>jogo.c</code> e <code>catalogo.c</code>). Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
                     <p>Escrever um arquivo <b>Makefile</b> que será responsável por gerenciar a execução do projeto dentro da plataforma <i>run.codes</i>.
                     </p>
                 </div>
@@ -149,21 +152,29 @@
                     <p>Caso seu projeto não satisfaça os pontos exigidos nos <b>objetivos</b> explicitados nas observações de implementação, sua nota poderá ser reduzida ou ser desconsiderada.</p>
                     <p>Cópias de código entre alunos, acusadas pela plataforma, resultarão imediatamente em <b>zero</b> aos dois ou mais alunos envolvidos.</p>
                 </div>
-            </div>
-            <h2 class="ex3">Exercício 3: Relatório</h2>
-            <div class="content ex3">
+            </section>
+            <!-- End of section 2 -->
+            <!-- Start of section 3 -->
+            <section class="title ex3">
+                <h2>Exercício 3: Relatório</h2>
+            </section>
+            <section class="content-cards ex3">
                 <div class="card">
                     <h3>Em construção...</h3>
                     <p>Trata-se de um breve relatório acerca da complexidade de alguns algoritmos. Há contagem de operações e do tempo de execução</p>
                 </div>
-            </div>
-            <h2 class="ex4">Exercício 4: Pilha de Cartas</h2>
-            <div class="content ex4">
+            </section>
+            <!-- End of section 3 -->
+            <!-- Start of section 4 -->
+            <section class="title ex4">
+                <h2>Exercício 4: Pilha de Cartas</h2>
+            </section>
+            <section class="content-cards ex4">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste exercício prático é estimular os estudantes a se familiarizarem com o comportamento e a lógica associados à estrutura de dados <b>pilha</b>.</p>
                     <p>Queremos que os alunos se habituem com a implementação desssa estrutura e consigam entender as funções básicas, que garantem a execução adequada desse <i>TAD</i>, em diferentes contextos.</p>
-                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
+                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <code>.c</code> e <code>.h</code> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
                 </div>
                 <div class="card">
                     <h3>Descrição</h3>
@@ -182,9 +193,8 @@
                     <p>Naipes = {"Espadas", "Paus", "Ouros", "Copas"}.</p>
                     <p>Símbolos = {'1', '2', ... , 10, 'V', 'D', 'R' }.</p>
                     <p>Exemplo de entrada:</p>
-                    <div class="box-code">
-                        <span class="code">
-                            <pre>
+                    <code>
+                        <pre>
 Ouros 1
 Ouros 7
 Espadas 5
@@ -236,28 +246,28 @@ Paus 2
 Espadas 1
 Espadas V
 Copas 7
-Paus 3                      </pre>
-                        </span>
-                    </div>
+Paus 3                  </pre>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Saída</h3>
                     <p>Como saída, seu programa deve indicar o resultado do jogo realizado.</p>
-                    <p>Saída da caso acima:</p>
-                    <div class="box-code">
-                        <span class="code">Ganhou ;)</span>
-                    </div>
+                    <p>Saída do caso acima:</p>
+                    <code>
+                        <p>Ganhou ;)</p>
+                    </code>
+                    <p></p>
                     <p>Caso o jogador perca:</p>
-                    <div class="box-code">
-                        <span class="code">Perdeu :(</span>
-                        <span class="code">Soma :: valor</span>
-                    </div>
+                    <code>
+                        <p>Perdeu :(</p>
+                        <p>Soma :: valor</p>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Observações da implementação</h3>
                     <p>Como é descrito na sessão objetivos desse documento, não queremos apenas que os alunos resolvam o problema, mas que utilizem métodos que serão comuns no decorrer da disciplina.</p>
-                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <span class="code">carta</span> como <span class="code">struct</span> e com a implementação do <i>TAD</i> <b>pilha</b> para construir o baralho de forma abstrata. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução.</p>
-                    <p>Utilizar múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
+                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <code>carta</code> como <code>struct</code> e com a implementação do <i>TAD</i> <b>pilha</b> para construir o baralho de forma abstrata. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução.</p>
+                    <p>Utilizar múltiplos arquivos <code>.c</code> e <code>.h</code> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
                     <p>Escrever um arquivo <b>Makefile</b> que será responsável por gerenciar a execução do projeto dentro da plataforma <i>run.codes</i>
                     </p>
                 </div>
@@ -267,14 +277,18 @@ Paus 3                      </pre>
                     <p>Caso seu projeto não satisfaça os pontos exigidos nos <b>objetivos</b> explicitados nas observações de implementação, sua nota poderá ser reduzida ou ser desconsiderada.</p>
                     <p>Cópias de código entre alunos, acusadas pela plataforma, resultarão imediatamente em <b>zero</b> aos dois ou mais alunos envolvidos.</p>
                 </div>
-            </div>
-            <h2 class="ex5">Exercício 5: Big Numbers</h2>
-            <div class="content ex5">
+            </section>
+            <!-- End of section 4 -->
+            <!-- Start of section 5 -->
+            <section class="title ex5">
+                <h2>Exercício 5: Big Numbers</h2>
+            </section>
+            <section class="content-cards ex5">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste exercício prático é estimular os estudantes a se familiarizarem com o comportamento e a lógica associados à estrutura de dados <b>lista encadeada</b>.</p>
                     <p>Queremos que os alunos se habituem com a implementação dessa estrutura e consigam entender as funções básicas, que garantem a execução adequada desse <i>TAD</i>, em diferentes contextos.</p>
-                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
+                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <code>.c</code> e <code>.h</code> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
                 </div>
                 <div class="card">
                     <h3>Descrição</h3>
@@ -292,18 +306,17 @@ Paus 3                      </pre>
                         <li>O universo observável está a <b>93 bilhões</b> de anos luz, aproximadamente 8,7984793395e+23 km.</li>
                     </ul>
                     <p>Existe uma maneira de representar esses números gigantescos por meio de uma lista encadeada. Pode-se dividir os digitos dos algarismos entre os nós da lista, caso queiramos representar os 93 bilhões de anos poderíamos fazer:</p>
-                    <div class="box-code">
-                        <span class="code">NULL &lt;-- (930) &lt;-- (0000) &lt;-- (0000)</span>
-                    </div>
+                    <code>
+                        <p>NULL &lt;-- (930) &lt;-- (0000) &lt;-- (0000)</p>
+                    </code>
                     <p>O objetivo deste exercício é desenvolver um projeto que seja capaz de realizar operações aritméticas e lógicas sobre esses números.</p>
                 </div>
                 <div class="card">
                     <h3>Entrada</h3>
                     <p>Seu algoritmo deve receber como entrada um número n, que representa a quantidade de operações que serão requisitadas. Após isso ele receberá um sequência de n comandos para serem executados dentre os possíveis {soma, maior, menor, igual} acompanhados de dois números inteiros sobre os quais serão realizadas as operações</p>
                     <p>Exemplo de entrada:</p>
-                    <div class="box-code">
-                        <span class="code">
-                            <pre>
+                    <code>
+                        <pre>
 12
 soma 9 3
 soma 225 225
@@ -316,17 +329,15 @@ maior 1123456 -112345664
 igual 123456789745 123456789745
 soma 050 050
 soma 2500 113567
-igual 09870 098700          </pre>
-                        </span>
-                    </div>
+igual 09870 098700      </pre>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Saída</h3>
                     <p>Como saída, seu programa deve indicar o resultado das operações.</p>
                     <p>Saída do caso acima:</p>
-                    <div class="box-code">
-                        <span class="code">
-                            <pre>
+                    <code>
+                        <pre>
 Resultado :: 12
 Resultado :: 450
 Resultado :: 23111111110
@@ -338,15 +349,14 @@ Resultado :: True
 Resultado :: True
 Resultado :: 100
 Resultado :: 116067
-Resultado :: False          </pre>
-                        </span>
-                    </div>
+Resultado :: False      </pre>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Observações da implementação</h3>
                     <p>Como é descrito na sessão objetivos desse documento, não queremos apenas que os alunos resolvam o problema, mas que utilizem métodos que serão comuns no decorrer da disciplina.</p>
-                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <span class="code">big_number</span> como <span class="code">struct</span> e com a implementação do <i>TAD</i> <b>lista</b> para construir o baralho de forma abstrata. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução. Utilizem a estrutura <b>lista encadeada dinâmica</b> com ligação simples.</p>
-                    <p> Para cada nó da lista, representar o valor de dentro com o tipo <b>int</b>. Utilizar múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
+                    <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando o objeto <code>big_number</code> como <code>struct</code> e com a implementação do <i>TAD</i> <b>lista</b> para construir o baralho de forma abstrata. A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução. Utilizem a estrutura <b>lista encadeada dinâmica</b> com ligação simples.</p>
+                    <p> Para cada nó da lista, representar o valor de dentro com o tipo <b>int</b>. Utilizar múltiplos arquivos <code>.c</code> e <code>.h</code> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
                     <p>Escrever um arquivo <b>Makefile</b> que será responsável por gerenciar a execução do projeto dentro da plataforma <i>run.codes</i>
                     </p>
                 </div>
@@ -356,14 +366,18 @@ Resultado :: False          </pre>
                     <p>Caso seu projeto não satisfaça os pontos exigidos nos <b>objetivos</b> explicitados nas observações de implementação, sua nota poderá ser reduzida ou ser desconsiderada.</p>
                     <p>Cópias de código entre alunos, acusadas pela plataforma, resultarão imediatamente em <b>zero</b> aos dois ou mais alunos envolvidos.</p>
                 </div>
-            </div>
-            <h2 class="ex6">Exercício 6: Conta Bancária</h2>
-            <div class="content ex6">
+            </section>
+            <!-- End of section 5 -->
+            <!-- Start of section 6 -->
+            <section class="title ex6">
+                <h2>Exercício 6: Conta Bancária</h2>
+            </section>
+            <section class="content-cards ex6">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste exercício prático é estimular os estudantes a se familiarizarem com o comportamento e a lógica associados à estrutura de dados <b>árvore de busca binária</b>.</p>
                     <p>Queremos que os alunos se habituem com a implementação desssa estrutura e consigam entender as funções básicas, que garantem a execução adequada desse <i>TAD</i>, em diferentes contextos.</p>
-                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
+                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <code>.c</code> e <code>.h</code> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
                 </div>
                 <div class="card">
                     <h3>Descrição</h3>
@@ -375,11 +389,10 @@ Resultado :: False          </pre>
                     <p>O primeiro indivíduo deve ser considerado como a raiz da sua árvore, os demais cadastros serão inseridos na árvore por uma regra que no futuro facilitará a busca por pessoas:</p>
                     <p>Caso o valor numérico do CPF do novo registro de cliente seja maior que o valor do cpf da raiz, ele deve ser inserido na sua sub-árvore direita, caso contrário, sa sua sub-árvore esquerda e assim sucessivamente até encontrar a posição adequada.</p>
                     <p>Lembre que um mesmo cpf não pode estar associado a mais e uma conta dentro do banco.</p>
-                    <p>Após os n valores, seu programa deve receber um char c representando uma operação que deverá ser realizada [<span class="code">'I'</span>: Inserção, <span class="code">'R'</span>: Remoção, <span class="code">'B'</span>: Busca]. Receberá então um cpf como parâmetro para todas as operações. Para a inserção de um novo registro, serão passadas as informações da pessoa como foi feito anteriormente na entrada.</p>
+                    <p>Após os n valores, seu programa deve receber um char c representando uma operação que deverá ser realizada [<code>'I'</code>: Inserção, <code>'R'</code>: Remoção, <code>'B'</code>: Busca]. Receberá então um cpf como parâmetro para todas as operações. Para a inserção de um novo registro, serão passadas as informações da pessoa como foi feito anteriormente na entrada.</p>
                     <p>Exemplo de entrada:</p>
-                    <div class="box-code">
-                        <span class="code">
-                            <pre>
+                    <code>
+                        <pre>
 118.469.561-02,Maria Cecília Gonçalves,50,3318.74
 498.228.938-76,Júlia Lorena Isadora Ribeiro,68,-20278.86
 250.627.718-89,Gabriel Maite Helena Martins,41,15079.44
@@ -391,24 +404,23 @@ Resultado :: False          </pre>
 550.067.540-01,Arthur Heloísa Lorena Almeida,19,-8101.50
 992.090.680-84,Isaac Anthony Fernandes,50,11898.13
 B
-904.621.899-61              </pre>
-                        </span>
-                    </div>
+904.621.899-61          </pre>
+                    </code>
                 </div>
                 <div class="card">
                     <h3>Saída</h3>
                     <p>Como saída, seu programa deve apresentar os dados da conta.</p>
                     <p>Saída da caso acima:</p>
-                    <div class="box-code">
-                        <span class="code">Conta :: Lívia Isadora Santos</span>
-                        <span class="code">CPF :: 904.621.899-61</span>
-                        <span class="code">Idade :: 47</span>
-                        <span class="code">Saldo atual :: R$ 9113.10</span>
-                    </div>
+                    <code>
+                        <p>Conta :: Lívia Isadora Santos</p>
+                        <p>CPF :: 904.621.899-61</p>
+                        <p>Idade :: 47</p>
+                        <p>Saldo atual :: R$ 9113.10</p>
+                    </code>
                     <p>Caso o cpf em questão não esteja mais na base de dados, deve imprimir a mensagem:</p>
-                    <div class="box-code">
-                        <span class="code">Pessoa nao encontrada.</span>
-                    </div>
+                    <code>
+                        <p>Pessoa nao encontrada.</p>
+                    </code>
                     <p>Para os casos de Inserção, e remoção deverá novamente imprimir a árvore na lógica de <b><i>preorder</i></b>.</p>
                 </div>
                 <div class="card">
@@ -417,7 +429,7 @@ B
                     <p>Devido a esse objetivo, será exigido que vocês desenvolvam seu projeto representando ambas as entidades citadas na descrição como <b>TADs completos e fechados sobre si mesmos</b>, ou seja, com funções auxiliares que permitam o acesso e a manipulação de seus atributos em diferentes contextos (arquivos .c separados). Os dados devem ser armazenados como um <i>TAD</i> <b>cliente</b> e dentro de uma <b>Árvore Binária de Busca</b> implementada com nós de ponteiros duplos.</p>
                     <p>Para remoção, substitua o nó excluído, pelo <b> menor</b> entre seus maiores filhos, isto é, o nó de menor valor da sua sub-árvore direita.</p>
                     <p> A memória deve ser alocada <b>dinamicamente</b> e ser devidamente liberada ao fim da execução.</p>
-                    <p>Utilizar múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
+                    <p>Utilizar múltiplos arquivos <code>.c</code> e <code>.h</code> para separar a implementação e a responsabilidade dos métodos de cada objeto. Construir funções para realizar operações repetitivas, ou seja, modularizar adequadamente seu código.</p>
                     <p>Escrever um arquivo <b>Makefile</b> que será responsável por gerenciar a execução do projeto dentro da plataforma <i>run.codes</i>
                     </p>
                 </div>
@@ -427,27 +439,35 @@ B
                     <p>Caso seu projeto não satisfaça os pontos exigidos nos <b>objetivos</b> explicitados nas observações de implementação, sua nota poderá ser reduzida ou ser desconsiderada.</p>
                     <p>Cópias de código entre alunos, acusadas pela plataforma, resultarão imediatamente em <b>zero</b> aos dois ou mais alunos envolvidos.</p>
                 </div>
-            </div>
-            <h2 class="ex7">Exercício 7: HackerRank</h2>
-            <div class="content ex7">
+            </section>
+            <!-- End of section 6 -->
+            <!-- Start of section 7 -->
+            <section class="title ex7">
+                <h2>Exercício 7: HackerRank</h2>
+            </section>
+            <section class="content-cards ex7">
                 <div class="card">
                     <h3>Em construção...</h3>
                     <p>Atividade extra sobre lógica de programação. Foram propostos 4 exercícios da plataforma HackerRank a fim de revisar e reforçar alguns tópicos de lógica e implementação em C.</p>
                 </div>
-            </div> 
-            <h2 class="ex8">Exercício 8: Catálogo de Jogos II</h2>
-            <div class="content ex8">
+            </section>
+            <!-- End of section 7 -->
+            <!-- Start of section 8 -->
+            <section class="title ex8">
+                <h2>Exercício 8: Catálogo de Jogos II </h2>
+            </section>
+            <section class="content-cards ex8">
                 <div class="card">
                     <h3>Objetivo</h3>
                     <p>O objetivo deste exercício prático é estimular os estudantes a se familiarizarem com o comportamento e a lógica associados à estrutura de dados <b>árvore AVL</b>.</p>
                     <p>Queremos que os alunos se habituem com a implementação desssa estrutura e consigam entender as funções básicas, que garantem a execução adequada desse <i>TAD</i>, em diferentes contextos.</p>
-                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <span class="code">.c</span> e <span class="code">.h</span> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
+                    <p>Para acostumar os alunos com conceitos de modularização e boas práticas de escrita de código, será exigido o uso de múltiplos arquivos <code>.c</code> e <code>.h</code> no projeto, bem como a construção de um arquivo <b>Makefile</b>, responsável por gerenciar a execução do programa.</p>
                 </div>
                 <div class="card">
                     <h3>Descrição</h3>
-                    <p>O Programa deve rodar até receber um <span class="code">"F"</span> de entrada. Quando receber o <span class="code">"F"</span> o programa deve imprimir a árvore no formato que foi pedido e desalocar <b>TODA</b> a memória alocada dinamicamente.</p>
+                    <p>O Programa deve rodar até receber um <code>"F"</code> de entrada. Quando receber o <code>"F"</code> o programa deve imprimir a árvore no formato que foi pedido e desalocar <b>TODA</b> a memória alocada dinamicamente.</p>
                     <p>O arquivo de entrada CSV.csv terá o seguinte formato: Nome do jogo (coluna 1), ano de lançamento (coluna 2) e produtora(coluna 3); sendo cada linha um novo jogo. TODOS os jogos do CSV devem ser adicionados a arvore AVL, antes de qualquer possível remoção.</p>
-                    <p>Cada nó da arvore é uma estrutura de dados <span class="code">jogo</span> que foi definida no exercício de catálogo de jogos.Ou seja, uma estrutura com Nome, Ano, Produtora. A arvore sempre deverá ser balanceada pela data de lançamento dos jogos. Todos os nós a esquerda do nó pai terão uma data de lançamento menor que a do nó pai, enquanto todos os nó a direita uma data de lançamento maior. IMPORTANTE: caso as datas de lançamento sejam iguais o programa deve ordenar por ordem alfabética (pelo nome do jogo) crescente.</p>
+                    <p>Cada nó da arvore é uma estrutura de dados <code>jogo</code> que foi definida no exercício de catálogo de jogos.Ou seja, uma estrutura com Nome, Ano, Produtora. A arvore sempre deverá ser balanceada pela data de lançamento dos jogos. Todos os nós a esquerda do nó pai terão uma data de lançamento menor que a do nó pai, enquanto todos os nó a direita uma data de lançamento maior. IMPORTANTE: caso as datas de lançamento sejam iguais o programa deve ordenar por ordem alfabética (pelo nome do jogo) crescente.</p>
                     <p>Resumindo, o programa deve sempre comparar a data de lançamento do jogo caso elas sejam iguais deve comparar o nome do jogo. Sempre colocando o menor para a esquerda e o maior para a direita.</p>
                 </div>
                 <div class="card">
@@ -461,7 +481,7 @@ B
                     </ol>
                     <p>Para simplificar a impressão, o programa deve imprimir apenas o Nome completo do jogo. As próximas entradas serão referentes a remoção de algum nó da arvore após TODOS os jogos serem alocados e balanceados. A remoção deve seguir a regra de substituir o nó removido, quando necessário, pelo <b>maior</b> nó da subárvore da esquerda.</p>
                     <p>O Usuário pode requerer a remoção de algum jogo, para isso ele irá inserir um número referente ao ano de lançamento do jogo. TODOS os jogos com essa data de lançamento devem ser excluídos. O programa deve excluir um jogo por vez e fazer o rebalanceamento Da arvore. Caso não haja nenhum jogo com essa ano o programa não fara nada.</p>
-                    <p>O usuário pode pedir para remover quantos jogos quiser. O programa só deve ser finalizado quando receber o <span class="code">"F"</span>. O programa só irá imprimir a arvore após o “F” (no formato especificado no início, pré-ordem [1], em ordem [2] ou pós-ordem [3]).</p>
+                    <p>O usuário pode pedir para remover quantos jogos quiser. O programa só deve ser finalizado quando receber o <code>"F"</code>. O programa só irá imprimir a arvore após o “F” (no formato especificado no início, pré-ordem [1], em ordem [2] ou pós-ordem [3]).</p>
                 </div>
                 <div class="card">
                     <h3>Observações da avaliação</h3>
@@ -469,8 +489,11 @@ B
                     <p>Caso seu projeto não satisfaça os pontos exigidos nos <b>objetivos</b> explicitados nas observações de implementação, sua nota poderá ser reduzida ou ser desconsiderada.</p>
                     <p>Cópias de código entre alunos, acusadas pela plataforma, resultarão imediatamente em <b>zero</b> aos dois ou mais alunos envolvidos.</p>
                 </div>
-            </div>
+            </section>
         </aside>
     </main>
+    <footer class="basic">
+        <p> Encontrou algum problema ou quer dar uma sugestão?</p>
+    </footer>
 </body>
 </html>
