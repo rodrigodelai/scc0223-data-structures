@@ -61,6 +61,13 @@ main {
 
 section {
     grid-area: section;
+    overflow: hidden;
+}
+
+section iframe {
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s;
 }
 
 aside {
@@ -71,21 +78,23 @@ aside {
 }
 
 .title {
-    height: 4rem;
+    height: 3.75rem;
     background-color: #EBECED;
     font-size: 1.2rem;
-    display: flex;
+    display: none;
+    opacity: 0;
     justify-content: center;
     align-items: center;
     font-weight: 600;
     margin: 0 0.5rem;
+    transition: all 0.4s;
 }
 
 .content-cards {
-    /* background-color:antiquewhite; */
     overflow-y:scroll;
     height: 26rem;
-    /* margin-bottom: 0.5rem; */
+    transition: all 0.35s;
+    opacity: 0;
 }
 
 .card {
@@ -135,7 +144,6 @@ footer {
     margin-top: 0.5rem;
     height: 1.5rem;
     display: flex;
-    padding-bottom: 0.rem;
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
@@ -149,4 +157,8 @@ footer:hover {
     background-color: #6BB5FF;
     font-size: 0.75rem;
     font-weight: 500;
+}
+
+footer:active {
+    background-color: #3393f4;
 }
