@@ -1,8 +1,9 @@
 let displayedContent;
-let titles = document.querySelectorAll(".title");
-let contents = document.querySelectorAll(".content-cards");
-let iframes = document.querySelectorAll("iframe");
-let iframeLinks = ["https://replit.com/@delai/ex1-pontos-cartesianos#main.c", 
+
+const titles = document.querySelectorAll(".title");
+const contents = document.querySelectorAll(".content-cards");
+const iframes = document.querySelectorAll("iframe");
+const iframeLinks = ["https://replit.com/@delai/ex1-pontos-cartesianos#main.c", 
                    "https://replit.com/@delai/ex2-catalogo-de-jogos#main.c",
                    "",
                    "https://replit.com/@delai/ex4-pilha-de-cartas#main.c",
@@ -13,7 +14,9 @@ let iframeLinks = ["https://replit.com/@delai/ex1-pontos-cartesianos#main.c",
 
 loadIframeContent(1);
 showSelectedContent(1);
+
 addClickEventToButtons();
+addClickEventToFooter();
 
 function addClickEventToButtons() {
     let buttons = document.querySelectorAll("header li");
@@ -67,4 +70,40 @@ function showSelectedContent(selectedContent) {
     setTimeout(() => {
         displayedContent = selectedContent;
     }, 550);
+}
+
+function addClickEventToFooter() {
+    const footer = document.querySelector("footer");
+    const dialog = document.querySelector("dialog");
+    const closeButton = document.querySelector("footer button");
+
+    footer.addEventListener("click", () => {showModal(footer, dialog)});
+
+    closeButton.addEventListener("click", () => {closeModal(footer, dialog)});
+
+    document.body.addEventListener("keydown", (event) => {
+        if (event.key == "Escape") 
+        closeModal(footer, dialog);
+    });
+}
+
+function showModal(footer, dialog) {
+    if (!footer.showingModal) {
+        dialog.showModal();
+        footer.showingModal = true;
+        document.querySelector("input").focus();
+    }
+}
+
+function closeModal(footer, dialog) {
+    setTimeout(() => {
+        dialog.close();
+        footer.showingModal = false;
+    });
+}
+
+function closeForm() {
+    const footer = document.querySelector("footer");
+    const dialog = document.querySelector("dialog");
+    closeModal(footer, dialog);
 }

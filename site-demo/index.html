@@ -501,6 +501,25 @@ B
     </main>
     <footer class="basic">
         <p> Encontrou algum problema ou quer dar uma sugestão?</p>
+        <dialog>
+            <form action="https://formsubmit.co/e5d2af9f5e51684fdb4c46a64773d5d2" method="POST" onsubmit="closeForm();reset()">
+                <h2>Envie uma mensagem</h2><button tabindex="10" type="button">🗙</button>
+                
+                <label for="name" focus>Nome </label>
+                <input type="text" name="name" id="name" placeholder="Antônio Carlos Jobim" required>
+                
+                <label for="email">E-mail </label>
+                <input type="email" email="email" id="email" placeholder="email@dominio.com">
+
+                <label for="mensagem">Mensagem </label>
+                <textarea name="mensagem" id="mensagem" cols="30" rows="10" required></textarea>
+
+                <div class="buttons-container">
+                    <button type="reset">Apagar</button>
+                    <button type="submit" formtarget="_blank">Enviar</button>
+                </div>
+            </form>
+        </dialog>
     </footer>
 </body>
 </html>

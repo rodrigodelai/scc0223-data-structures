@@ -27,6 +27,7 @@ header ul {
     justify-content: space-around;
     align-items: center;
     font-weight: 600;
+    overflow-x: hidden;
 }
 
 header li {
@@ -51,7 +52,7 @@ header li:active {
 
 main {
     margin-top: 0.5rem; 
-    height: 30rem;
+    height: min(31.6rem, 70vh);
     display: grid;
     grid-template-columns: 1fr 1fr 1.05fr;
     grid-template-areas: 
@@ -88,13 +89,15 @@ aside {
     font-weight: 600;
     margin: 0 0.5rem;
     transition: all 0.4s;
+    text-align: center;
 }
 
 .content-cards {
     overflow-y:scroll;
-    height: 26rem;
+    height: calc(100% - 3.75rem);
     transition: all 0.35s;
     opacity: 0;
+    display: none;
 }
 
 .card {
@@ -143,22 +146,123 @@ aside {
 footer {
     margin-top: 0.5rem;
     height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 0.7rem;
     user-select: none;
-    transition: all 0.7s;
-    cursor: pointer;
-    font-weight: 400;
+    /* cursor: pointer; */
+    font-weight: 500;
+    overflow: hidden;
 }
 
-footer:hover {
+footer p {
+    padding: .37rem;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    transition: all 1s;
+    z-index: 10;
+    cursor: pointer;
+}
+
+footer p:hover {
     background-color: #6BB5FF;
-    font-size: 0.75rem;
-    font-weight: 500;
+    scale: 1.1;  
 }
 
 footer:active {
     background-color: #3393f4;
+}
+
+footer dialog {
+    width: min(70%, 20rem);
+    cursor: default;
+    user-select: none;
+    background-color: #EBECED;
+    border: none;
+    border-radius: 0.35rem;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.3);
+    opacity: 0;
+}
+
+dialog[open] {
+    animation: fadein .3s forwards;
+}
+  
+@keyframes fadein{
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+footer dialog::backdrop {
+    background-color: #1c233370;
+}
+
+footer h2 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer h2 + button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    cursor: pointer;
+    font-size: .8rem;
+    padding: .5rem;
+    border-radius: 50%;
+    background-color: #EBECED;
+    transition: all .5s;
+    border: none;
+}
+
+footer h2 + button:hover {
+    background-color: #e4e5e6ac;
+}
+
+footer label {
+    display: block;
+    margin: 0.5rem 0 0.3rem;
+    font-size: 0.88rem;
+}
+
+footer input, footer textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem 0.4rem;
+    font-family: inherit;
+    border-radius: .35rem;
+    border: .03rem solid gray;
+    resize: none;
+}
+
+footer .buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: .85rem 0 0;
+}
+
+footer .buttons-container button {
+    border: .03rem solid gray;
+    border-radius: .35rem;
+    padding: .2rem .4rem;
+    font-family: inherit;
+    background-color: #FEFEFE;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+footer .buttons-container button:hover {
+    scale: 1.1;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.3);
+}
+
+footer button:active {
+    background-color:#e4e5e6ac;
 }
