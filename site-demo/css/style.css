@@ -24,10 +24,19 @@ body {
 header ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     font-weight: 600;
-    overflow-x: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+}
+
+header ul::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 header li {
@@ -37,9 +46,11 @@ header li {
     cursor: pointer;
     height: 2.5rem;
     width: 100%;
+    min-width: 5.8rem;
     border-radius: 0.35rem;
     user-select: none;
     transition: all 0.3s ease-in-out;
+    scroll-snap-align: start;
 }
 
 header li:hover {
@@ -54,14 +65,14 @@ main {
     margin-top: 0.5rem; 
     height: min(31.6rem, 70vh);
     display: grid;
-    grid-template-columns: 1fr 1fr 1.05fr;
+    grid-template-columns: 1fr 1fr minmax(265px, 1.05fr);
     grid-template-areas: 
-    'section section aside';
+    'iframe iframe aside';
     gap: 0.5rem;
 }
 
-section {
-    grid-area: section;
+main > section {
+    grid-area: iframe;
     overflow: hidden;
 }
 
@@ -145,22 +156,21 @@ aside {
 
 footer {
     margin-top: 0.5rem;
-    height: 1.5rem;
     font-size: 0.7rem;
     user-select: none;
-    /* cursor: pointer; */
     font-weight: 500;
     overflow: hidden;
 }
 
 footer p {
+    box-sizing: border-box;
     padding: .37rem;
     text-align: center;
     width: 100%;
-    height: 100%;
     transition: all 1s;
     z-index: 10;
     cursor: pointer;
+    height: fit-content;
 }
 
 footer p:hover {
@@ -266,3 +276,25 @@ footer .buttons-container button:hover {
 footer button:active {
     background-color:#e4e5e6ac;
 }
+
+@media (max-width: 606px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 2;
+        grid-template-areas: 
+        'iframe'
+        'aside';
+        height: auto;
+    }
+
+    main > section {
+        grid-area: iframe;
+        height: 28.3rem;
+    }
+
+    main > aside {
+        grid-area: aside;
+        height: 28.3rem;
+    }
+}
+

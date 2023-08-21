@@ -19,7 +19,7 @@ addClickEventToButtons();
 addClickEventToFooter();
 
 function addClickEventToButtons() {
-    let buttons = document.querySelectorAll("header li");
+    const buttons = document.querySelectorAll("header li");
 
     for (let i=0; i<buttons.length; i++) {
         buttons[i].onclick = handleButtonClick;
@@ -46,7 +46,7 @@ function hideDisplayedContent() {
 }
 
 function loadIframeContent(selectedContent) {
-    let iframe = iframes[selectedContent - 1];
+    const iframe = iframes[selectedContent - 1];
 
     if (!iframe.wasLoaded) {
         iframe.src = iframeLinks[(selectedContent - 1)];
