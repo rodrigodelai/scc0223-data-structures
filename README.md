@@ -1,10 +1,36 @@
+<details>
+  <summary><b>English version</b> <img width="15px" src="https://cdn-icons-png.freepik.com/256/12361/12361101.png?semt=ais_hybrid"></summary>
+
+## SCC0223 - Data Structures I
+
+This course was offered in **Fall 2022** by the [ICMC-USP](https://www.icmc.usp.br) to the Bachelor of **Data Science** students with a workload of **120** hours. Its objective is to familiarize students with various data structures, enabling them to use these resources in the development of other computer science activities. More information about the course can be found [here](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=SCC0223).
+
+In this repository, you will find C implementations of some of the main data structures covered during the semester. Keep in mind that this is merely a learning record and may contain errors and inconsistencies that are natural to the learning process, and do not reflect current knowledge or competence. Check it out:
+
+- [Exercise 1](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex1) – Cartesian Points: Dynamic sequential list;
+- [Exercise 2](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex2) – Game Catalog: Dynamic sequential list;
+- [Exercise 3](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex3) – Report: Analysis of algorithm complexity;
+- [Exercise 4](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex4) – Card Stack: Dynamic linked stack;
+- [Exercise 5](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex5) – Big Numbers: Dynamic linked list;
+- [Exercise 6](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex6) – Bank Account: Binary search tree;;
+- [Exercise 7](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex7) – HackerHank: Programming logic;
+- [Exercise 8](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex8) – Bank Account II: AVL tree.
+
+There is also this simple site that displays the programs in a more interactive format: [deploy](https://delai-estruturas-de-dados.netlify.app).
+
+<br>
+
+&#9660; <b>Portuguese version</b> <img width="15px" src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiranacionalbrasil_.jpg">
+
+</details>
+
 ## SCC0223 - Estruturas de Dados I
 Esta disciplina foi oferecida em **2022/2** pelo [ICMC-USP](https://www.icmc.usp.br) à turma de Bacharelado em **Ciência de Dados** com carga horária de **120h**. Seu objetivo é o de familiarizar os estudantes com várias estruturas da informação, buscando habilitá-los a contar com esses recursos no desenvolvimento de outras atividades de ciências de computação. Mais informações sobre o curso [aqui](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=SCC0223).
 
 Neste repositório você encontrará implementações em C de algumas das principais estruturas de dados vistas no decorrer do semestre letivo. Tenha em mente que este é apenas um registro de aprendizado, podendo conter erros e incoerências naturais do processo de aprendizagem, e que não refletem conhecimento ou competência atuais. Confira:
 
-- [Exercício 1](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex1) – Pontos Cartesianos: Lista sequêncial dinâmica;
-- [Exercício 2](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex2) – Catálogo de Jogos: Lista sequêncial dinâmica;
+- [Exercício 1](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex1) – Pontos Cartesianos: Lista sequencial dinâmica;
+- [Exercício 2](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex2) – Catálogo de Jogos: Lista sequencial dinâmica;
 - [Exercício 3](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex3) – Relatório: Análise da complexidade de algoritmos;
 - [Exercício 4](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex4) – Pilha de Cartas: Pilha encadeada dinâmica;
 - [Exercício 5](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex5) – Big Numbers: Lista encadeada dinâmica;
@@ -12,4 +38,4 @@ Neste repositório você encontrará implementações em C de algumas das princi
 - [Exercício 7](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex7) – HackerHank: Lógica de Programação;
 - [Exercício 8](https://github.com/rodrigodelai/scc0223-estruturas-de-dados/tree/master/ex8) – Conta Bancária II: Árvore AVL.
 
-Há também este simples site que exibe os programas num formato mais interativo: [demo](https://delai-estruturas-de-dados.netlify.app).
+Há também este simples site que exibe os programas num formato mais interativo: [deploy](https://delai-estruturas-de-dados.netlify.app).
